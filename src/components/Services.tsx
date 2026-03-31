@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { ShoppingBag, Home, Briefcase, Star, CheckCircle2 } from 'lucide-react';
+import { ShoppingBag, Home, Briefcase, Star, CheckCircle2, Layers } from 'lucide-react';
 
 export default function Services() {
   const services = [
@@ -26,6 +26,12 @@ export default function Services() {
       icon: <Star className="text-accent" size={40} />,
       items: ['Standing in long lines', 'Chaperone services'],
       description: 'Unique solutions for your specific needs, handled with care and patience.',
+    },
+    {
+      title: 'Extended Services',
+      icon: <Layers className="text-accent" size={40} />,
+      items: ['Househelp and nannie jobs','Construction jobs','Car hire and Boda Services','Airbnb bookings','Land buying and selling'],
+      description: 'From home assistance to transport, bookings, and property services, we handle a wide range of needs so you don’t have to.',
     },
   ];
 

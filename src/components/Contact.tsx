@@ -10,14 +10,28 @@ export default function Contact() {
     message: '',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // In a real app, this would send an email or trigger a notification
-    console.log('Form submitted:', formData);
-    alert('Thank you for your request! We will get back to you shortly.');
-    setFormData({ name: '', email: '', service: 'Personal Errands', message: '' });
-  };
 
+    try {
+      const res = await fetch("http://localhost:5000/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (res.ok) {
+        alert("Request sent successfully!");
+      } else {
+        alert("Failed to send request");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Something went wrong");
+    }
+  };
   return (
     <section id="contact" className="py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -147,6 +161,7 @@ export default function Contact() {
                   <option>Home Services</option>
                   <option>Business Services</option>
                   <option>Specialized Services</option>
+                  <option>Extended Services</option>
                 </select>
               </div>
 
